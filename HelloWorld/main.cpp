@@ -47,7 +47,7 @@ int main(void)
     while (true)
     {
 
-        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1, ui8PinData);
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1, 2|5);
 
         SysCtlDelay(20000000);
 
@@ -55,7 +55,7 @@ int main(void)
 
         SysCtlDelay(20000000);
 
-        sprintf(buffer,"hola mundo %i\r\n",count++);
+        sprintf(buffer,"hola mundo %i\r\n",count++);   //in order to use sprintf in necesary change stack size to 4096 ans heap memory 0x400
 
         UART0_Send_String(buffer);
 

@@ -41,19 +41,23 @@ int main(void)
 
     UART0_Send_String("Inicio codigo \r\n");
 
+    char buffer[10];
+    int count = 0;
 
     while (true)
     {
 
         GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1, ui8PinData);
 
-        SysCtlDelay(26666667);
+        SysCtlDelay(20000000);
 
         GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1, 0x00);
 
-        SysCtlDelay(26666667);
+        SysCtlDelay(20000000);
 
-        UART0_Send_String("Hola mundo\r\n");
+        sprintf(buffer,"hola mundo %i\r\n",count++);
+
+        UART0_Send_String(buffer);
 
 
         if (ui8PinData == GPIO_PIN_3)
